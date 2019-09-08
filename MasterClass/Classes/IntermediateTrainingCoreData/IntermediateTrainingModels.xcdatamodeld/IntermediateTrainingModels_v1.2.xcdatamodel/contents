@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18D109" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CompanyEntity" representedClassName="CompanyEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="founded" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="numberOfEmployees" attributeType="String" defaultValueString="0" syncable="YES"/>
+        <attribute name="officialName" attributeType="String" defaultValueString="NO OFFICIAL NAME" syncable="YES"/>
+        <relationship name="employees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmployeeEntity" inverseName="company" inverseEntity="EmployeeEntity" syncable="YES"/>
+    </entity>
+    <entity name="EmployeeAddressEntity" representedClassName="EmployeeAddressEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="employee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeEntity" inverseName="employeeAddress" inverseEntity="EmployeeEntity" syncable="YES"/>
+    </entity>
+    <entity name="EmployeeEntity" representedClassName="EmployeeEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="fullName" optional="YES" attributeType="String" elementID="name" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CompanyEntity" inverseName="employees" inverseEntity="CompanyEntity" syncable="YES"/>
+        <relationship name="employeeAddress" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeAddressEntity" inverseName="employee" inverseEntity="EmployeeAddressEntity" syncable="YES"/>
+        <relationship name="employeeInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeInformationEntity" inverseName="employee" inverseEntity="EmployeeInformationEntity" syncable="YES"/>
+    </entity>
+    <entity name="EmployeeInformationEntity" representedClassName="EmployeeInformationEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="taxid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="employee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeEntity" inverseName="employeeInformation" inverseEntity="EmployeeEntity" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CompanyEntity" positionX="-6640.91015625" positionY="-388.7890625" width="128" height="135"/>
+        <element name="EmployeeAddressEntity" positionX="-6134.56640625" positionY="-389.09375" width="194.89453125" height="103"/>
+        <element name="EmployeeEntity" positionX="-6406.8828125" positionY="-358.98046875" width="128" height="120"/>
+        <element name="EmployeeInformationEntity" positionX="-6211.27734375" positionY="-275.5625" width="207.32421875" height="88"/>
+    </elements>
+</model>
